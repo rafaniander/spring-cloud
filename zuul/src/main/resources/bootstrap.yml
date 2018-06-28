@@ -7,15 +7,13 @@ spring:
     config:
       uri: http://localhost:8888
 zuul:
-#  ignoredServices: '*'
   routes:
     hello:
-      path: /**      
+      path: /**
       stripPrefix: false
   host:
     connectTimeoutMillis: 600000
     socketTimeoutMillis: 600000
-
 management:
   endpoint:
     refresh:
@@ -24,32 +22,15 @@ management:
     web:
       exposure:
         include: refresh
-        
-#hystrix:
-#  command:
-#    hello:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 600000
-#
-#hello:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    ListOfServers: http://localhost:8081,http://localhost:8082
-#    ConnectTimeout: 1000
-#    ReadTimeout: 3000        
-
-#ribbon:
-#  eureka:
-#    enabled: true
-#  ReadTimeout: 30000
-#  ConnectTimeout: 30000
-
-#HYSTRIX:
-#  COMMAND:
-#    DEFAULT:
-#      EXECUTION:
-#        ISOLATION:
-#          THREAD:
-#            TIMEOUTINMILLISECONDS: 100000
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliSeconds: 100000            
