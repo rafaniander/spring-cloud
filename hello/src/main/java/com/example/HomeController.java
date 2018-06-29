@@ -16,17 +16,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @EnableAutoConfiguration
 @RequestMapping("/")
 public class HomeController {
-	
+
 	@Autowired
-    private HomePropertie propertie;
-	
-//	@Value("${nome:Kratos}")
-//	private String nome;
-	
+	private HomePropertie propertie;
+
 	@ResponseBody
 	@GetMapping("/")
 	public String home(HttpServletRequest request) {
-		return "Olá " + propertie.getNome() + " na porta " + request.getServerPort(); 
+		return "Olá " + propertie.getNome() + " na porta " + request.getServerPort();
 	}
 
 }

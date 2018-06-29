@@ -7,5 +7,5 @@ spring:
     config:
       server:
         git:
-          uri: /home/rafael/Projetos/rafaniander/spring-cloud/repository
-          #uri: /home/rafael/Desktop/Git/rafaniander/spring-cloud/repository
+          uri: /home/rafael/Desktop/Git/rafaniander/spring-cloud/repository
+          #uri: /home/rafael/Projetos/rafaniander/spring-cloud/repository
