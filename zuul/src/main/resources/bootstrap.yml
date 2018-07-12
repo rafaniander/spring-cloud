@@ -6,13 +6,11 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: guest
-#    password: guest
 zuul:
   routes:
+    auth:
+      path: /**
+      stripPrefix: false
     hello:
       path: /**
       stripPrefix: false
