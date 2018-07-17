@@ -23,18 +23,20 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.tokenStore(tokenStore()).authenticationManager(this.authenticationManager);
+		endpoints.tokenStore(tokenStore())
+		.authenticationManager(this.authenticationManager);
 	}
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory()
+		clients
+			.inMemory()
 			.withClient("hello-example")
-			.secret("hello-example")
-			.authorizedGrantTypes("password", "refresh_token")
-			.scopes("read", "write")
+			.secret("{noop}123")
+			.authorizedGrantTypes("password", "refresh_token").scopes("read", "write")
 			.resourceIds("resources")
-			.accessTokenValiditySeconds(1800);
+			.accessTokenValiditySeconds(1800)
+			.refreshTokenValiditySeconds(20000);
 	}
 
 	@Bean

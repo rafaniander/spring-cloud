@@ -1,16 +1,23 @@
 package com.example.controller;
 
-import java.security.Principal;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
 public class AuthController {
 
-    @RequestMapping("/user")
-    public String getCurrentLoggedInUser(Principal user) {
-        return user.getName();
-    }	
+	@ResponseBody
+	@GetMapping("/user")
+	public String user() {
+		return "Olá, você está conectado!";
+	}
+
+	@PostMapping("/login")
+	public void login() {
+		System.out.println("Logou!!!");
+	}
 }

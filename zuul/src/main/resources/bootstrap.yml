@@ -10,13 +10,13 @@ zuul:
   routes:
     auth:
       path: /**
-      stripPrefix: false
+      stripPrefix: false      
     hello:
-      path: /**
+      path: /hello/**
       stripPrefix: false
   host:
     connectTimeoutMillis: 600000
-    socketTimeoutMillis: 600000
+    socketTimeoutMillis: 600000    
 management:
   endpoint:
     refresh:

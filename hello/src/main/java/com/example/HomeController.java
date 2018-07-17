@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RefreshScope
 @EnableAutoConfiguration
-@RequestMapping("/")
+@RequestMapping("/hello")
 public class HomeController {
 
 	@Autowired
 	private HomePropertie propertie;
 
 	@ResponseBody
-	@GetMapping("/")
+	@GetMapping("/oi")
 	public String home(HttpServletRequest request) {
 		return "Olá " + propertie.getNome() + " na porta " + request.getServerPort();
 	}

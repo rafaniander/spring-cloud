@@ -1,28 +1,31 @@
 package com.example.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.google.common.collect.Lists;
-
 public class AuthUserDetails implements UserDetails {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private String password;
 	private String username;
 
 	public AuthUserDetails(String username, String password) {
-		this.username=username;
-		this.password=password;
+		this.username = username;
+		this.password = password;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Lists.newArrayList(new SimpleGrantedAuthority("sample-role"));
+		List<GrantedAuthority> perfis = new ArrayList<>();
+		GrantedAuthority role = new SimpleGrantedAuthority("sample-role");
+		perfis.add(role);
+		return perfis;
 	}
 
 	@Override
