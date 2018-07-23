@@ -9,7 +9,7 @@ spring:
 zuul:
   routes:
     auth:
-      path: /**
+      path: /auth/**
       stripPrefix: false      
     hello:
       path: /hello/**

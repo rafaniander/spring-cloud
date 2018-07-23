@@ -1,22 +1,21 @@
 package com.example.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/auth")
 public class AuthController {
 
 	@ResponseBody
-	@GetMapping("/user")
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public String user() {
 		return "Olá, você está conectado!";
 	}
 
-	@PostMapping("/login")
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public void login() {
 		System.out.println("Logou!!!");
 	}
