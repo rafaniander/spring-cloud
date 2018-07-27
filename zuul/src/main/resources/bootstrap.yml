@@ -3,28 +3,17 @@ server:
 spring:
   application:
     name: gateway
-  cloud:
-    config:
-      uri: http://localhost:8888
 zuul:
   routes:
     auth:
       path: /auth/**
-      stripPrefix: false      
+      stripPrefix: false
     hello:
       path: /hello/**
       stripPrefix: false
   host:
     connectTimeoutMillis: 600000
-    socketTimeoutMillis: 600000    
-management:
-  endpoint:
-    refresh:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: refresh,bus-refresh
+    socketTimeoutMillis: 600000
 ribbon:
   eureka:
     enabled: true

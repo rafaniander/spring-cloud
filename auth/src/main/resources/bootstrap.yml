@@ -1,5 +1,5 @@
 server:
-  port: 8070  
+  port: 8070
   servlet:
     context-path: /auth
 spring:
@@ -11,10 +11,12 @@ spring:
 security:
   oauth2:
     client:
-      access-token-validity-seconds: 1800
-      authorized-grant-types: password,refresh_token
       client-id: hello-exemple
       client-secret: hello-exemple
-      resource-ids: resources
       scope: read,write
-  
+      resource-ids: resources
+      authorized-grant-types: password, refresh_token
+      access-token-validity-seconds: 1800
+      refresh-token-validity-seconds: 20000
+    authorization:
+      check-token-access: permitAll()
