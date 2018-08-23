@@ -1,28 +1,51 @@
 server:
   port: 8080
+  use-forward-headers: true
 spring:
   application:
     name: gateway
+  auth-server: http://localhost:9999/uaa
+  security:
+    basic:
+      enabled: false
+    oauth2:
+      client:
+        client-id: hello-example
+        client-secret: hello-example
+        access-token-uri: ${auth-server}/oauth/token
+        user-authorization-uri: ${auth-server}/oauth/authorize
+        scope: read, write
+      resource:
+        token-info-uri: ${auth-server}/oauth/check_token
 zuul:
+  add-host-header: true
+  add-proxy-headers: true
+  ignored-services: '*'
   routes:
     auth:
       path: /auth/**
+      service-id: auth
+      sensitive-headers: false
       stripPrefix: false
     hello:
       path: /hello/**
+      service-id: hello
+      sensitive-headers: false
       stripPrefix: false
   host:
     connectTimeoutMillis: 600000
     socketTimeoutMillis: 600000
 ribbon:
-  eureka:
-    enabled: true
-  ReadTimeout: 30000
-  ConnectTimeout: 30000
+  ConnectTimeout: 60000
+  ReadTimeout: 600000
 hystrix:
   command:
     default:
       execution:
-        isolation:
-          thread:
-            timeoutInMilliSeconds: 100000
+        timeout:
+          enabled: false
+proxy:
+  auth:
+    load-balanced: true
+    routes:
+      hello: oauth2

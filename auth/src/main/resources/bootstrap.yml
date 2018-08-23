@@ -5,18 +5,14 @@ server:
 spring:
   application:
     name: auth
-  cloud:
-    config:
-      uri: http://localhost:8888
-security:
-  oauth2:
-    client:
-      client-id: hello-exemple
-      client-secret: hello-exemple
-      scope: read,write
-      resource-ids: resources
-      authorized-grant-types: password, refresh_token
-      access-token-validity-seconds: 1800
-      refresh-token-validity-seconds: 20000
+  security:
+    user:
+      password: password
+    oauth2:
+      client:
+        client-id: hello-example
+        client-secret: hello-example
+        scope: read, write
+        auto-approve-scopes: .*
     authorization:
       check-token-access: permitAll()
